@@ -1,0 +1,20 @@
+group:
+  - flare_group
+task: ner
+dataset_path: chancefocus/flare-ner
+training_split: train
+validation_split: validation
+test_split: test
+template_aliases: ""
+doc_to_text: "{{question}}"
+doc_to_target: "{{answer}}"
+gold_alias: "{{answer.split('\n')}}"
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: false
+    regexes_to_ignore:
+      - ","
+      - "\\$"
